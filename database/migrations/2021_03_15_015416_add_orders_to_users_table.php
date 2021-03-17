@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatusToUser extends Migration
+class AddOrdersToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddStatusToUser extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('status')->default('false');
+            $table->string('orders')->default('oke');
         });
     }
 
@@ -26,7 +26,7 @@ class AddStatusToUser extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-          
+            //
         });
     }
 }

@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User ;
 use App\member;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
 
 class MemberController extends Controller
 {
@@ -14,8 +17,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-
-        $member = member::paginate(15);
+        Session::flash('message','This is a message!'); 
+        $member = User::paginate(15);
         return view('member.index',compact('member'));
     }
 
@@ -26,7 +29,8 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('member.create');
+        
+        return view('member.create',['status'=>'success']);
     }
 
     /**
@@ -58,6 +62,10 @@ class MemberController extends Controller
     public function show(member $member)
     {
         //
+    }
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('member.index');
     }
 
     /**
@@ -102,12 +110,12 @@ class MemberController extends Controller
      * @param  \App\member  $member
      * @return \Illuminate\Http\Response
      */
-    public function destroy(member $member)
+    public function destroy($id)
     {
-       
-        $user = member::all();
-       $member->delete();
-       return redirect()->route('member.index');
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('member.index');
+
     }
  
 }

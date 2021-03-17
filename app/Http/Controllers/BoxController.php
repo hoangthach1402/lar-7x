@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\box;
 use Illuminate\Http\Request;
+use App\User ;
+use collection;
 
 class BoxController extends Controller
 {
@@ -14,7 +16,11 @@ class BoxController extends Controller
      */
     public function index()
     {
-        //
+       
+        $users = User::whereId(3)->get();
+      return view('anki.index');
+        
+     
     }
 
     /**
@@ -27,6 +33,7 @@ class BoxController extends Controller
         //
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -35,7 +42,7 @@ class BoxController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

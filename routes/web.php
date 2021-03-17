@@ -5,6 +5,9 @@ use App\Mail;
 use App\Mail\testEmail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\User;
+use App\member; 
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,15 +19,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('newbrand');
-Route::get('hellogit', function ($id) {
-    
-});
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Auth::routes();
+
+
+Route::get('collect','BoxController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('1','mycontroller@show');
@@ -70,10 +68,15 @@ Route::get('vue',function(){
     return view('vue.index');
 });
 
-Route::resource('test','testController');
 
+Route::prefix('demo')->group(function () {
+ Route::get('home','testController@index');
+ Route::post('store','testController@store')->name('demo.store');
+ Route::get('/','testController@show');
+});
+Route::post('logout','MemberController@logout')->name('logout');
 
-
+Route::get('homeshop','ProductController@index')->name('homeshop');
 
  
 

@@ -2,4 +2,4 @@
 
 
 @include('crud.content')
-@include('crud.productcard')
+@include('crud.productcard')  

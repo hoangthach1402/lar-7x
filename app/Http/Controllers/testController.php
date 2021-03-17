@@ -13,7 +13,7 @@ class testController extends Controller
      */
     public function index()
     {
-        return 'index';
+        return view('demo.index');
     }
 
     /**
@@ -34,7 +34,7 @@ class testController extends Controller
      */
     public function store(Request $request)
     {
-        return 'store';
+      return 'hello';
     }
 
     /**
@@ -43,7 +43,7 @@ class testController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         return 'show';
     }

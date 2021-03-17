@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatusToUser extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,15 @@ class AddStatusToUser extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('status')->default('false');
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('order_id');
+            $table->integer('soluong');
+            
+            
+            
+            $table->timestamps();
         });
     }
 
@@ -25,8 +32,6 @@ class AddStatusToUser extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-          
-        });
+        Schema::dropIfExists('products');
     }
 }
